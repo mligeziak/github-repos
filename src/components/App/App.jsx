@@ -1,10 +1,17 @@
 import React from 'react';
-import './App.scss';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
 
-function App() {
-  return (
-    <div className="App">App</div>
-  );
-}
+import styles from './App.module.scss';
+
+const client = new ApolloClient({
+  uri: 'https://api.github.com/graphql',
+});
+
+const App = () => (
+  <ApolloProvider client={client}>
+    <div className={styles.root}>App</div>
+  </ApolloProvider>
+);
 
 export default App;
