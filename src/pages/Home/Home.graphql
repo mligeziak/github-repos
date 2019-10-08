@@ -1,0 +1,9 @@
+query GetRates {
+  organization(login: "microsoft") {
+    repositories(first: 5, orderBy: { field: STARGAZERS, direction: DESC }) {
+      nodes {
+        name
+      }
+    }
+  }
+}
