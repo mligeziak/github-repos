@@ -1,6 +1,9 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from '@apollo/react-hooks';
+
+import Routing from './Routing';
 
 import styles from './App.module.scss';
 
@@ -10,7 +13,11 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <div className={styles.root}>App</div>
+    <BrowserRouter>
+      <div className={styles.root}>
+        <Routing />
+      </div>
+    </BrowserRouter>
   </ApolloProvider>
 );
 
