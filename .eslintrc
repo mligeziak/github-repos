@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "react-app",
+    "airbnb"
+  ],
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  }
+}
