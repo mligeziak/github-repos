@@ -1,0 +1,15 @@
+.avatar {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.starsCounter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 60px;
+
+  .starsCounterText {
+    margin-right: 5px;
+  }
+}

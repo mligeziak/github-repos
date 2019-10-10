@@ -1,4 +1,4 @@
-query GetRates(
+query GetRepos(
   $phrase: String!
 ) {
   search(query: $phrase, type: REPOSITORY, first: 5) {
@@ -6,9 +6,15 @@ query GetRates(
     nodes {
       __typename
       ... on Repository {
+        id
         name
         owner {
+          id
           login
+          avatarUrl
+        }
+        stargazers {
+          totalCount
         }
       }
     }

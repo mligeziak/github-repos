@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import TextField from '@material-ui/core/TextField';
 import _debounce from 'lodash/debounce';
 import config from 'config';
+
+import TextField from '@material-ui/core/TextField';
 
 class SearchField extends PureComponent {
   debouncedChange = _debounce((value) => {

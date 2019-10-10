@@ -2,15 +2,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 50px;
+  padding: 50px 0;
 
   .logo {
     width: 450px;
     height: auto;
+    transition: all .3s;
+
+    &.small {
+      width: 200px;
+      margin-bottom: 20px;
+    }
   }
 
   .searchField {
     display: block;
     width: 400px;
+  }
+
+  .searchResults {
+    margin-top: 10px;
   }
 }
