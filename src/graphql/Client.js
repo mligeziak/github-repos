@@ -1,3 +1,4 @@
+import config from 'config';
 import {
   ApolloClient,
   ApolloLink,
@@ -14,7 +15,7 @@ class Client {
 
   createClient() {
     const httpLink = new HttpLink({
-      uri: process.env.REACT_APP_GRAPHQL_API_URL,
+      uri: config.apiUrl,
     });
 
     const authLink = this.createAuthLink();
@@ -27,7 +28,7 @@ class Client {
 
   createAuthLink = () => (
     new ApolloLink((operation, forward) => {
-      const token = process.env.REACT_APP_GRAPHQL_API_TOKEN;
+      const token = config.apiToken;
 
       operation.setContext({
         headers: {

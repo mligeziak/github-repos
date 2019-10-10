@@ -1,8 +1,15 @@
-query GetRates {
-  organization(login: "microsoft") {
-    repositories(first: 5, orderBy: { field: STARGAZERS, direction: DESC }) {
-      nodes {
+query GetRates(
+  $phrase: String!
+) {
+  search(query: $phrase, type: REPOSITORY, first: 5) {
+    repositoryCount
+    nodes {
+      __typename
+      ... on Repository {
         name
+        owner {
+          login
+        }
       }
     }
   }
