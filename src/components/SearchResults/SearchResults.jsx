@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { repoShape } from 'utils/shapes';
 
 import List from '@material-ui/core/List';
 import Card from '@material-ui/core/Card';
@@ -10,7 +11,6 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import SearchResult from './SearchResult';
 
 import styles from './SearchResults.module.scss';
-import { resultShape } from './SearchResults.shapes';
 
 const SearchResults = ({
   results,
@@ -40,7 +40,7 @@ const SearchResults = ({
 );
 
 SearchResults.propTypes = {
-  results: PropTypes.arrayOf(resultShape).isRequired,
+  results: PropTypes.arrayOf(repoShape).isRequired,
   matchedResults: PropTypes.number,
   loading: PropTypes.bool,
   className: PropTypes.string,

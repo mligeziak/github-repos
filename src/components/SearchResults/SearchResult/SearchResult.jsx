@@ -1,4 +1,5 @@
 import React from 'react';
+import { repoShape } from 'utils/shapes';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -9,7 +10,6 @@ import StarIcon from '@material-ui/icons/Star';
 import Typography from '@material-ui/core/Typography';
 
 import styles from './SearchResult.module.scss';
-import { resultShape } from '../SearchResults.shapes';
 
 const SearchResult = ({ result: { name, owner, stargazers } }) => (
   // TODO: handle onClick
@@ -34,7 +34,7 @@ const SearchResult = ({ result: { name, owner, stargazers } }) => (
 );
 
 SearchResult.propTypes = {
-  result: resultShape.isRequired,
+  result: repoShape.isRequired,
 };
 
 export default React.memo(SearchResult);

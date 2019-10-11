@@ -1,0 +1,29 @@
+query GetRepository(
+  $owner: String!
+  $name: String!
+) {
+  repository(owner: $owner, name: $name) {
+     owner {
+      id
+      login
+      avatarUrl
+    }
+    stargazers {
+      totalCount
+    }
+    commitComments(last: 20) {
+      nodes {
+        commit {
+          id
+          messageHeadline
+          url
+          author {
+            name
+            avatarUrl
+          }
+          authoredDate
+        }
+      }
+    }
+  }
+}
