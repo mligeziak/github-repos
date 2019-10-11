@@ -47,7 +47,11 @@ const Repository = () => {
 
   return (
     <div className={styles.root}>
-      {loading ? <CircularProgress className={styles.loading} /> : (
+      {loading ? (
+        <div className={styles.loading}>
+          <CircularProgress />
+        </div>
+      ) : (
         <CommitList
           commits={commits}
           loadMore={loadMore}

@@ -1,1 +1,9 @@
-.root {}
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .loading {
+    margin: 100px 0 0;
+  }
+}

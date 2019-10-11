@@ -1,5 +1,6 @@
 import React from 'react';
 import { repoShape } from 'utils/shapes';
+import { useHistory } from 'react-router-dom';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -11,27 +12,35 @@ import Typography from '@material-ui/core/Typography';
 
 import styles from './SearchResult.module.scss';
 
-const SearchResult = ({ result: { name, owner, stargazers } }) => (
-  // TODO: handle onClick
-  <ListItem button onClick={() => {}}>
-    <ListItemAvatar>
-      <Avatar>
-        <img
-          src={owner.avatarUrl}
-          alt={owner.login}
-          className={styles.avatar}
-        />
-      </Avatar>
-    </ListItemAvatar>
-    <ListItemText primary={name} secondary={owner.login} />
-    <ListItemSecondaryAction className={styles.starsCounter}>
-      <Typography variant="caption" classes={{ root: styles.starsCounterText }}>
-        {stargazers.totalCount}
-      </Typography>
-      <StarIcon />
-    </ListItemSecondaryAction>
-  </ListItem>
-);
+const SearchResult = ({ result: { name, owner, stargazers } }) => {
+  const history = useHistory();
+
+  const onClick = () => history.push(`/repository/${owner.login}/${name}`);
+
+  return (
+    <ListItem
+      button
+      onClick={onClick}
+    >
+      <ListItemAvatar>
+        <Avatar>
+          <img
+            src={owner.avatarUrl}
+            alt={owner.login}
+            className={styles.avatar}
+          />
+        </Avatar>
+      </ListItemAvatar>
+      <ListItemText primary={name} secondary={owner.login} />
+      <ListItemSecondaryAction className={styles.starsCounter}>
+        <Typography variant="caption" classes={{ root: styles.starsCounterText }}>
+          {stargazers.totalCount}
+        </Typography>
+        <StarIcon />
+      </ListItemSecondaryAction>
+    </ListItem>
+  );
+};
 
 SearchResult.propTypes = {
   result: repoShape.isRequired,
