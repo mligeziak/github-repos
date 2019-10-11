@@ -1,6 +1,6 @@
 import React from 'react';
-import { repoShape } from 'utils/shapes';
 import { useHistory } from 'react-router-dom';
+import { repoShape } from 'utils/shapes';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';

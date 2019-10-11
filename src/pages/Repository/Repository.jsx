@@ -6,6 +6,7 @@ import _set from 'lodash/set';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CommitList from 'components/CommitList';
+import RepositoryDetails from 'components/RepositoryDetails';
 
 import styles from './Repository.module.scss';
 import GetRepository from './Repository.graphql';
@@ -52,11 +53,16 @@ const Repository = () => {
           <CircularProgress />
         </div>
       ) : (
-        <CommitList
-          commits={commits}
-          loadMore={loadMore}
-          hasMore={hasNextPage}
-        />
+        <>
+          <RepositoryDetails
+            repository={data.repository}
+          />
+          <CommitList
+            commits={commits}
+            loadMore={loadMore}
+            hasMore={hasNextPage}
+          />
+        </>
       )}
     </div>
   );

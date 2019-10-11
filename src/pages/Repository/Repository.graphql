@@ -4,7 +4,10 @@ query GetRepository(
   $cursor: String
 ) {
   repository(owner: $owner, name: $name) {
-     owner {
+    id
+    name
+    description
+    owner {
       id
       login
       avatarUrl
