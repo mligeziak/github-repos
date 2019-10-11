@@ -7,6 +7,7 @@ import _set from 'lodash/set';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CommitList from 'components/CommitList';
 import RepositoryDetails from 'components/RepositoryDetails';
+import TopBar from 'components/TopBar';
 
 import styles from './Repository.module.scss';
 import GetRepository from './Repository.graphql';
@@ -18,7 +19,6 @@ const gethasNextPage = (data) => _get(data, 'repository.defaultBranchRef.target.
 
 const Repository = () => {
   const { owner, name } = useParams();
-
   const { data, loading, fetchMore } = useQuery(GetRepository, {
     variables: {
       cursor: null,
@@ -54,14 +54,20 @@ const Repository = () => {
         </div>
       ) : (
         <>
-          <RepositoryDetails
-            repository={data.repository}
+          <TopBar
+            title={_get(data, 'repository.name')}
+            goBackTo="/"
           />
-          <CommitList
-            commits={commits}
-            loadMore={loadMore}
-            hasMore={hasNextPage}
-          />
+          <div className={styles.container}>
+            <RepositoryDetails
+              repository={data.repository}
+            />
+            <CommitList
+              commits={commits}
+              loadMore={loadMore}
+              hasMore={hasNextPage}
+            />
+          </div>
         </>
       )}
     </div>

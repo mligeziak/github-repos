@@ -38,11 +38,11 @@ const Readme = ({ readme }) => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          {readme ? (
-            <Typography variant="body1" component="div">
+          <Typography variant="body1" component="div">
+            {readme ? (
               <ReactMarkdown source={readme} />
-            </Typography>
-          ) : 'No readme'}
+            ) : 'No readme'}
+          </Typography>
         </CardContent>
       </Collapse>
     </>
