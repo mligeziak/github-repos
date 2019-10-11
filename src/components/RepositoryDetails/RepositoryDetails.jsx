@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 import StarIcon from '@material-ui/icons/Star';
 import Typography from '@material-ui/core/Typography';
+import Readme from './Readme';
 
 import styles from './RepositoryDetails.module.scss';
 
@@ -16,6 +17,7 @@ const RepositoryDetails = ({
     name,
     description,
     stargazers,
+    readme,
   },
 }) => (
   <Card className={styles.card}>
@@ -45,6 +47,7 @@ const RepositoryDetails = ({
         {description || 'No description'}
       </Typography>
     </CardContent>
+    <Readme readme={readme.text} />
   </Card>
 );
 

@@ -1,3 +1,4 @@
+# TODO: refactor to 2 queries - one for commits and one for details
 query GetRepository(
   $owner: String!
   $name: String!
@@ -14,6 +15,11 @@ query GetRepository(
     }
     stargazers {
       totalCount
+    }
+    readme: object(expression: "master:README.md") {
+      ... on Blob {
+        text
+      }
     }
     defaultBranchRef {
       id
