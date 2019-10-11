@@ -20,6 +20,7 @@ export const commitShape = PropTypes.shape({
   messageHeadline: PropTypes.string,
   author: authorShape,
   authoredDate: PropTypes.string,
+  url: PropTypes.string,
 });
 
 export const repoShape = PropTypes.shape({
@@ -27,9 +28,11 @@ export const repoShape = PropTypes.shape({
   name: PropTypes.string,
   owner: ownerShape,
   stargazers: stargazersShape,
-  commitComments: PropTypes.shape({
-    nodes: PropTypes.shape({
-      commit: commitShape,
+  defaultBranchRef: PropTypes.shape({
+    target: PropTypes.shape({
+      history: PropTypes.shape({
+        nodes: commitShape,
+      }),
     }),
   }),
 });

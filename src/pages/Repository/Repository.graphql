@@ -1,6 +1,7 @@
 query GetRepository(
   $owner: String!
   $name: String!
+  $cursor: String
 ) {
   repository(owner: $owner, name: $name) {
      owner {
@@ -11,17 +12,26 @@ query GetRepository(
     stargazers {
       totalCount
     }
-    commitComments(last: 20) {
-      nodes {
-        commit {
-          id
-          messageHeadline
-          url
-          author {
-            name
-            avatarUrl
+    defaultBranchRef {
+      id
+      target {
+        ...on Commit {
+          history(first: 20, after: $cursor) {
+            nodes {
+              id
+              messageHeadline
+              url
+              author {
+                name
+                avatarUrl
+              }
+              authoredDate
+            }
+            pageInfo {
+              endCursor
+              hasNextPage
+            }
           }
-          authoredDate
         }
       }
     }
