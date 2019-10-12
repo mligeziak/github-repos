@@ -7,4 +7,5 @@ export const flattenRepository = (data) => ({
   commits: _get(data, 'repository.defaultBranchRef.target.history.nodes', []),
   endCursor: _get(data, 'repository.defaultBranchRef.target.history.pageInfo.endCursor', null),
   hasNextPage: _get(data, 'repository.defaultBranchRef.target.history.pageInfo.hasNextPage', false),
+  defaultBranch: _get(data, 'repository.defaultBranchRef.name', null),
 });

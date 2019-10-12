@@ -18,6 +18,7 @@ const RepositoryDetails = ({
     description,
     stargazers,
     readme,
+    defaultBranch,
   },
 }) => (
   <Card className={styles.card}>
@@ -44,7 +45,11 @@ const RepositoryDetails = ({
     />
     <CardContent>
       <Typography variant="body2" color="textSecondary" component="p">
+        {'Description: '}
         {description || 'No description'}
+      </Typography>
+      <Typography variant="body2" color="textSecondary" component="p">
+        {`Default branch: ${defaultBranch}`}
       </Typography>
     </CardContent>
     <Readme readme={readme} />

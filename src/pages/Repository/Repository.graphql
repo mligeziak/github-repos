@@ -23,6 +23,7 @@ query GetRepository(
     }
     defaultBranchRef {
       id
+      name
       target {
         ...on Commit {
           history(first: 20, after: $cursor) {
