@@ -47,7 +47,7 @@ const RepositoryDetails = ({
         {description || 'No description'}
       </Typography>
     </CardContent>
-    <Readme readme={readme && readme.text} />
+    <Readme readme={readme} />
   </Card>
 );
 

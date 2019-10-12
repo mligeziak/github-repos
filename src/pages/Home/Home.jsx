@@ -8,7 +8,7 @@ import SearchResults from 'components/SearchResults';
 import GithubLogo from 'assets/github-logo.jpg';
 
 import styles from './Home.module.scss';
-import GetRepos from './Home.graphql';
+import { GetRepos } from './Home.graphql';
 
 const Home = () => {
   const [phrase, setPhrase] = useState('');

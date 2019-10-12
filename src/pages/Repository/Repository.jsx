@@ -9,13 +9,13 @@ import CommitList from 'components/CommitList';
 import RepositoryDetails from 'components/RepositoryDetails';
 import TopBar from 'components/TopBar';
 
+import { flattenRepository } from 'utils/flattenResponses';
+
 import styles from './Repository.module.scss';
-import GetRepository from './Repository.graphql';
+import { GetRepository } from './Repository.graphql';
 
 const getCommits = (data) => _get(data, 'repository.defaultBranchRef.target.history.nodes', []);
 const setCommits = (data, value) => _set(data, 'repository.defaultBranchRef.target.history.nodes', value);
-const getEndCursor = (data) => _get(data, 'repository.defaultBranchRef.target.history.pageInfo.endCursor', null);
-const gethasNextPage = (data) => _get(data, 'repository.defaultBranchRef.target.history.pageInfo.hasNextPage', false);
 
 const Repository = () => {
   const { owner, name } = useParams();
@@ -27,9 +27,8 @@ const Repository = () => {
     },
   });
 
-  const commits = getCommits(data);
-  const endCursor = getEndCursor(data);
-  const hasNextPage = gethasNextPage(data);
+  const flattenData = flattenRepository(data);
+  const { commits, endCursor, hasNextPage } = flattenData;
 
   const loadMore = () => fetchMore({
     variables: {
@@ -55,12 +54,12 @@ const Repository = () => {
       ) : (
         <>
           <TopBar
-            title={_get(data, 'repository.name')}
+            title={flattenData.name}
             goBackTo="/"
           />
           <div className={styles.container}>
             <RepositoryDetails
-              repository={data.repository}
+              repository={flattenData}
             />
             <CommitList
               commits={commits}

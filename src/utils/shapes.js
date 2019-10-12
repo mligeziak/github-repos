@@ -11,10 +11,6 @@ export const authorShape = PropTypes.shape({
   avatarUrl: PropTypes.string,
 });
 
-export const stargazersShape = PropTypes.shape({
-  totalCount: PropTypes.number,
-});
-
 export const commitShape = PropTypes.shape({
   id: PropTypes.string,
   messageHeadline: PropTypes.string,
@@ -28,12 +24,9 @@ export const repoShape = PropTypes.shape({
   name: PropTypes.string,
   description: PropTypes.string,
   owner: ownerShape,
-  stargazers: stargazersShape,
-  defaultBranchRef: PropTypes.shape({
-    target: PropTypes.shape({
-      history: PropTypes.shape({
-        nodes: PropTypes.arrayOf(commitShape),
-      }),
-    }),
-  }),
+  starsCount: PropTypes.number,
+  readme: PropTypes.string,
+  commits: PropTypes.arrayOf(commitShape),
+  endCursor: PropTypes.string,
+  hasNextPage: PropTypes.bool,
 });

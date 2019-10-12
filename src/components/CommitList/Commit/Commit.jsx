@@ -32,6 +32,7 @@ const Commit = ({
     </ListItemAvatar>
     <ListItemText
       primary={messageHeadline}
+      // TODO: use local timezone
       secondary={`${authoredDate} by ${author.name}`}
     />
     <ListItemSecondaryAction>
