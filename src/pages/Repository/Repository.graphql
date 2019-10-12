@@ -30,6 +30,8 @@ query GetRepository(
             nodes {
               id
               messageHeadline
+              messageBody
+              changedFiles
               url
               author {
                 name

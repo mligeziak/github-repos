@@ -14,6 +14,8 @@ export const authorShape = PropTypes.shape({
 export const commitShape = PropTypes.shape({
   id: PropTypes.string,
   messageHeadline: PropTypes.string,
+  messageBody: PropTypes.string,
+  changedFiles: PropTypes.number,
   author: authorShape,
   authoredDate: PropTypes.string,
   url: PropTypes.string,
