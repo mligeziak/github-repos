@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { commitShape } from 'utils/shapes';
+import { fromUtcToLocal } from 'utils/time';
 
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -32,8 +34,7 @@ const Commit = ({
     </ListItemAvatar>
     <ListItemText
       primary={messageHeadline}
-      // TODO: use local timezone
-      secondary={`${authoredDate} by ${author.name}`}
+      secondary={`${fromUtcToLocal(authoredDate)} by ${author.name}`}
     />
     <ListItemSecondaryAction>
       <IconButton onClick={() => window.open(url)}>
