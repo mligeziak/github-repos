@@ -11,7 +11,7 @@
     "graphql": "^14.5.8",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-app-rewire-graphql-tag": "^1.1.0",
